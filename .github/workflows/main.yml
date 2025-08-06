@@ -1,0 +1,38 @@
+name: First Workflow
+
+on: 
+  #schedule:
+  # - cron: '*/5 * * * *'  # Every 5 minutes
+  push:
+   branches: 
+    - main
+    - 'feature**'
+   paths-ignore:
+    - 'docs/**'
+   tags-ignore:
+    - 'test_ignore_workflow'
+  pull_request:
+   types: [opened, synchronize, closed, assigned, edited]
+  workflow_dispatch:
+
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Print build
+       run: echo 'build'
+
+ test:
+   runs-on: windows-latest
+   steps:
+     - name: Print test -chrome
+       run: echo 'test -chrome'
+     - name: Print test -edge
+       run: echo 'test -edge'
+
+ deploy:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Print deploy
+       run: echo 'deploy'
+    
