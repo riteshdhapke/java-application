@@ -15,7 +15,7 @@ jobs:
        os:  ubuntu-latest
      - index: 1
        total: 4
-       os:  ubuntu-latest
+       os:  windows-latest
      java-version: [17,21]
      
        
