@@ -1,0 +1,26 @@
+name: GitHub Context
+
+
+on:
+ workflow_dispatch
+jobs:
+ github_context:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Print Info about Github
+     run: |
+      echo 'Repository details ${{github.repository}}'
+      echo 'Repo id ${{github.repository_id}}'
+      echo 'Repo url ${{github.repositoryUrl}}'
+      echo 'Repo token ${{github.token}}'
+      echo 'Workflow name ${{github.workflow}}'
+      echo 'Actor ${{github.actor}}'
+      echo  'ref details ${{github.ref}}'
+      echo 'trigger event $${{github.event_name}}'
+      echo 'Run id ${{github.run_id}}'
+      echo 'Runner number is ${{github.run_number}}'
+   -  name: Examples
+      if: github.ref ==  'refs/heads/master'
+      run: echo 'deploy'
+   -  if: github.event_name == 'pull_request'
+      run: echo 'trigger the workflow'
