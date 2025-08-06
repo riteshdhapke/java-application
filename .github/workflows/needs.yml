@@ -1,18 +1,6 @@
 name: First Workflow
 
 on: 
-  #schedule:
-  # - cron: '*/5 * * * *'  # Every 5 minutes
-  push:
-   branches: 
-    - main
-    - 'feature**'
-   paths-ignore:
-    - 'docs/**'
-   tags-ignore:
-    - 'test_ignore_workflow'
-  pull_request:
-   types: [opened, synchronize, closed, assigned, edited]
   workflow_dispatch:
 
 jobs:
@@ -23,6 +11,7 @@ jobs:
        run: echo 'build'
 
  test:
+   needs: build
    runs-on: windows-latest
    steps:
      - name: Print test -chrome
@@ -31,6 +20,7 @@ jobs:
        run: echo 'test -edge'
 
  deploy:
+   needs: [build, test]
    runs-on: ubuntu-latest
    steps:
      - name: Print deploy
