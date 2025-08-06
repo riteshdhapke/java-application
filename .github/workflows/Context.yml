@@ -24,3 +24,6 @@ jobs:
       run: echo 'deploy'
    -  if: github.event_name == 'pull_request'
       run: echo 'trigger the workflow'
+   -  name: Notify
+      run: echo 'event triggered by ${{github.actor}}'
+    
