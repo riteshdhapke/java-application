@@ -14,5 +14,6 @@ jobs:
     run: |
      echo ' ${{secrets.PASSWORD}}'
      echo ' ${{env.MY_VAR}}'
+     echo ' ${{vars.MY_VAR}}'
     env:
      MY_VAR: steps
