@@ -1,0 +1,19 @@
+name: Outputs
+
+on: workflow_dispatch
+
+jobs:
+ gen-msg:
+  runs-on: ubuntu-latest
+  outputs:
+    message: ${{steps.set-message.outputs.passed}}
+  steps:
+   - id: set-message
+     run: |
+      echo "passed= Ok" >> $GITHUB_OUTPUT
+      echo "failed=Not Ok" >> $GITHUB_OUTPUT
+ dis-msg:
+  needs: gen-msg
+  runs-on: ubuntu-latest
+  steps:
+   - run: echo '${{needs.gen-msg.outputs.message}}'
