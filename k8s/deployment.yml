@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo
+      app: demo-app
   template:
     metadata:
       labels:
-        app: demo
+        app: demo-app
     spec:
       imagePullSecrets:
         - name: ghcr-secret
