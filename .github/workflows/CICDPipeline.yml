@@ -7,6 +7,9 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
+    env:
+        DOCKER_IMAGE: riteshdhapke/demo-app
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
