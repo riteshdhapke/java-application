@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: demo
+          image: ghcr.io/YOUR_GITHUB_USERNAME/demo:latest
+          ports:
+            - containerPort: 8080
