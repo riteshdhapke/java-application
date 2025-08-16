@@ -6,6 +6,9 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     env:
         DOCKER_IMAGE: riteshdhapke/demo-app
