@@ -77,4 +77,15 @@ jobs:
         run: |
           kubectl apply -f k8s/deployment.yml
           kubectl apply -f k8s/service.yml
-          kubectl rollout status deployment/demo-app
+
+      - name: Wait for Pod to be Ready
+        run: |
+         kubectl wait --for=condition=ready pod -l app=my-app --timeout=120s
+
+      - name: Get Pod Status
+        run: |
+          kubectl get pods
+
+      - name: Get Service Status
+        run: |
+         kubectl get svc
