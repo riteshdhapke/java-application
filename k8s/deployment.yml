@@ -16,6 +16,6 @@ spec:
         - name: ghcr-secret
       containers:
         - name: demo
-          image: ghcr.io/YOUR_GITHUB_USERNAME/demo:latest
+          image: ghcr.io/YOUR_GITHUB_USERNAME/demo-app:latest
           ports:
             - containerPort: 8080
