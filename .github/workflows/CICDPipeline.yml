@@ -48,10 +48,10 @@ jobs:
           docker tag $DOCKER_IMAGE:${{ github.sha }} $DOCKER_IMAGE:latest
 
       # Push the Docker image to Docker Hub
-      - name: Push Docker image
-        run: |
-          docker push $DOCKER_IMAGE:${{ github.sha }}
-          docker push $DOCKER_IMAGE:latest
+      # - name: Push Docker image
+      #   run: |
+      #     docker push $DOCKER_IMAGE:${{ github.sha }}
+      #     docker push $DOCKER_IMAGE:latest
 
       - name: Set Up Minikube (Local Testing)
         run: |
