@@ -31,8 +31,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: riteshdhapke
-          password: SatyNAM8605033137$
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       
       # Build the Docker image
       - name: Build Docker image
