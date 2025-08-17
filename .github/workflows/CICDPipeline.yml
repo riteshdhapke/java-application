@@ -33,13 +33,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Log in to Docker Hub
-      # - name: Log in to Docker Hub
-      #   uses: docker/login-action@v3
-      #   with:
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-
       
       # Build the Docker image
       - name: Build Docker image
@@ -58,34 +51,7 @@ jobs:
          minikube start
          kubectl config use-context minikube
 
-      # - name: Build and Push Docker image
-      #   run: |
-      #     IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/demo:latest
-      #     echo "Using image $IMAGE_NAME"
-      #     docker build -t $IMAGE_NAME .
-      #     echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      #     docker push $IMAGE_NAME
-      # - name: Set up Kubectl
-      #   uses: azure/setup-kubectl@v4
-
-      # - name: Configure kubeconfig
-      #   run: |
-      #     mkdir -p $HOME/.kube
-      #     echo "${{ secrets.KUBECONFIG_DATA }}" > $HOME/.kube/config
-
       - name: Deploy to Minikube
         run: |
           kubectl apply -f k8s/deployment.yml
           kubectl apply -f k8s/service.yml
-
-      # - name: Wait for Pod to be Ready
-      #   run: |
-      #    kubectl wait --for=condition=ready pod -l app=my-app --timeout=120s
-
-      # - name: Get Pod Status
-      #   run: |
-      #     kubectl get pods
-
-      # - name: Get Service Status
-      #   run: |
-      #    kubectl get svc
